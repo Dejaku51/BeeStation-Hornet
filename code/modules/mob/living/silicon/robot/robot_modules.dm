@@ -226,6 +226,9 @@
 	R.notransform = TRUE
 	R.SetLockdown(TRUE)
 	R.anchored = TRUE
+	var/datum/effect_system/smoke_spread/smoke = new
+	smoke.set_up(1, R.loc)
+	smoke.start()
 	sleep(1)
 	for(var/i in 1 to 4)
 		playsound(R, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, 1, -1)
@@ -371,6 +374,7 @@
 	var/list/medical_icons = list(
 		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_med"),
 		"Roomba ERT" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_crisis"),
+		"Qualified Doctor" = image(icon = 'icons/mob/robots.dmi', icon_state = "qualified_doctor"),
 		"Eve" = image(icon = 'icons/mob/robots.dmi', icon_state = "eve"),
 		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-medh"),
 		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-med"),
@@ -389,6 +393,8 @@
 	switch(medical_robot_icon)
 		if("Gibbs")
 			cyborg_base_icon = "gibbs"
+		if("Qualified Doctor")
+			cyborg_base_icon = "qualified_doctor"
 		if("Needles")
 			cyborg_base_icon = "needles"
 		if("Arachne")
@@ -562,7 +568,7 @@
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/security_icons = list(
-		"Sleek Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekecurity"),
+		"Sleek Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleeksecurity"),
 		"Noble Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-sec"),
 		"Ancient Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "secbot"),
 		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-sec"),
@@ -580,7 +586,7 @@
 	var/security_robot_icon = show_radial_menu(cyborg, cyborg, security_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(security_robot_icon)
 		if("Sleek Security")
-			cyborg_base_icon = "sleekecurity"
+			cyborg_base_icon = "sleeksecurity"
 		if("Noble Security")
 			cyborg_base_icon = "noble-sec"
 		if("Ancient Security")
@@ -1022,15 +1028,12 @@
 /obj/item/robot_module/syndicate/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/syndicate_icons = list(
-		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_combat"),
 		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
 		"Walking gun" = image(icon = 'icons/mob/robots.dmi', icon_state = "motile-syndie"),
 		"Chesty" = image(icon = 'icons/mob/robots.dmi', icon_state = "chesty")
 	)
 	var/syndicate_robot_icon = show_radial_menu(cyborg, cyborg, syndicate_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(syndicate_robot_icon)
-		if("Roomba")
-			cyborg_base_icon = "zoomba_combat"
 		if("Normal")
 			cyborg_base_icon = "synd_sec"
 		if("Walking gun")
@@ -1128,14 +1131,14 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/syndicate_icons = list(
 		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-combat"),
-		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "syndie_engi")
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi")
 	)
 	var/syndicate_robot_icon = show_radial_menu(cyborg, cyborg, syndicate_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(syndicate_robot_icon)
 		if("Kodiak")
 			cyborg_base_icon = "kodiak-combat"
 		if("Normal")
-			cyborg_base_icon = "syndie_engi"
+			cyborg_base_icon = "synd_engi"
 		else
 			return FALSE
 	return ..()
