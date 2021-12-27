@@ -288,6 +288,49 @@
 	moduleselect_icon = "standard"
 	hat_offset = -3
 
+/obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/standard_icons = list(
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_standard"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-flower"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-std"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-stdh"),
+		"Durin" = image(icon = 'icons/mob/robots.dmi', icon_state = "durin"),
+		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-standard"),
+		"Spider" = image(icon = 'icons/mob/robots.dmi', icon_state = "spider-standard"),
+		"Sleek" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekstandard"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaSD"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
+		"Ancient" = image(icon = 'icons/mob/robots.dmi', icon_state = "defbot")
+	)
+	var/standard_robot_icon = show_radial_menu(cyborg, cyborg, standard_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(standard_robot_icon)
+		if("Normal")
+			cyborg_base_icon = "robot"
+		if("Ancient")
+			cyborg_base_icon = "defbot"
+		if("Marina")
+			cyborg_base_icon = "marinaSD"
+		if("Sleek")
+			cyborg_base_icon = "sleekstandard"
+		if("Spider")
+			cyborg_base_icon = "spider-standard"
+		if("Kodiak")
+			cyborg_base_icon = "kodiak-standard"
+		if("Durin")
+			cyborg_base_icon = "durin"
+		if("NobleH")
+			cyborg_base_icon = "noble-stdh"
+		if("Noble")
+			cyborg_base_icon = "noble-std"
+		if("Booty")
+			cyborg_base_icon = "booty-flower"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_standard"
+		else
+			return FALSE
+	return ..()
+
 /obj/item/robot_module/medical
 	name = "Medical"
 	basic_modules = list(
@@ -322,6 +365,61 @@
 	moduleselect_icon = "medical"
 	can_be_pushed = FALSE
 	hat_offset = 3
+
+/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/medical_icons = list(
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_med"),
+		"Roomba ERT" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_crisis"),
+		"Eve" = image(icon = 'icons/mob/robots.dmi', icon_state = "eve"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-medh"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-med"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-medi"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marina"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-white"),
+		"Sleek" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekmedic"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
+		"Gibbs" = image(icon = 'icons/mob/robots.dmi', icon_state = "gibbs"),
+		"Needles" = image(icon = 'icons/mob/robots.dmi', icon_state = "needles"),
+		"Arachne" = image(icon = 'icons/mob/robots.dmi', icon_state = "arachne"),
+		"Ancient Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medbot"),
+		"Droid Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-medical")
+	)
+	var/medical_robot_icon = show_radial_menu(cyborg, cyborg, medical_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(medical_robot_icon)
+		if("Gibbs")
+			cyborg_base_icon = "gibbs"
+		if("Needles")
+			cyborg_base_icon = "needles"
+		if("Arachne")
+			cyborg_base_icon = "arachne"
+		if("Ancient Medical")
+			cyborg_base_icon = "medbot"
+		if("Droid Medical")
+			cyborg_base_icon = "droid-medical"
+		if("Normal")
+			cyborg_base_icon = "medical"
+		if("Booty")
+			cyborg_base_icon = "booty-white"
+		if("Sleek")
+			cyborg_base_icon = "sleekmedic"
+		if("Marina")
+			cyborg_base_icon = "marina"
+		if("Servbot")
+			cyborg_base_icon = "servbot-medi"
+		if("NobleH")
+			cyborg_base_icon = "noble-medh"
+		if("Noble")
+			cyborg_base_icon = "noble-med"
+		if("Eve")
+			cyborg_base_icon = "eve"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_med"
+		if("Roomba ERT")
+			cyborg_base_icon = "zoomba_crisis"
+		else
+			return FALSE
+	return ..()
 
 /obj/item/robot_module/engineering
 	name = "Engineering"
@@ -365,6 +463,61 @@
 	magpulsing = TRUE
 	hat_offset = -4
 
+/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/engineering_icons = list(
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_engi"),
+		"Wall-e" = image(icon = 'icons/mob/robots.dmi', icon_state = "wall-e"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-eng"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-engh"),
+		"Conagher" = image(icon = 'icons/mob/robots.dmi', icon_state = "conagher"),
+		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-eng"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-engi"),
+		"Sleek" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekengineer"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaEN"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-yellow"),
+		"Droid" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-engineer"),
+		"Ancient" = image(icon = 'icons/mob/robots.dmi', icon_state = "engibot"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
+		"Engiseer" = image(icon = 'icons/mob/robots.dmi', icon_state = "engiseer"),
+		"Normal but with treads" = image(icon = 'icons/mob/robots.dmi', icon_state = "engi-tread")
+	)
+	var/engineering_robot_icon = show_radial_menu(cyborg, cyborg, engineering_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(engineering_robot_icon)
+		if("Engiseer")
+			cyborg_base_icon = "engiseer"
+		if("Normal but with treads")
+			cyborg_base_icon = "engi-tread"
+		if("Normal")
+			cyborg_base_icon = "engineer"
+		if("Ancient")
+			cyborg_base_icon = "engibot"
+		if("Droid")
+			cyborg_base_icon = "droid-engineer"
+		if("Booty")
+			cyborg_base_icon = "booty-yellow"
+		if("Marina")
+			cyborg_base_icon = "marinaEN"
+		if("Sleek")
+			cyborg_base_icon = "sleekengineer"
+		if("Servbot")
+			cyborg_base_icon = "servbot-engi"
+		if("Kodiak")
+			cyborg_base_icon = "kodiak-eng"
+		if("Conagher")
+			cyborg_base_icon = "conagher"
+		if("NobleH")
+			cyborg_base_icon = "noble-engh"
+		if("Noble")
+			cyborg_base_icon = "noble-eng"
+		if("Wall-e")
+			cyborg_base_icon = "wall-e"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_engi"
+		else
+			return FALSE
+	return ..()
+
 /obj/item/robot_module/deathsquad
 	name = "CentCom"
 	basic_modules = list(
@@ -406,6 +559,58 @@
 	can_be_pushed = FALSE
 	hat_offset = 3
 
+/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/security_icons = list(
+		"Sleek Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekecurity"),
+		"Noble Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-sec"),
+		"Ancient Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "secbot"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-sec"),
+		"Securitron" = image(icon = 'icons/mob/robots.dmi', icon_state = "securitron"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
+		"Droid Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-security"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-red"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-sech"),
+		"Woody" = image(icon = 'icons/mob/robots.dmi', icon_state = "woody"),
+		"Kodiak-sec" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-sec"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaSC"),
+		"Normal but with treads" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec-tread"),
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_sec")
+	)
+	var/security_robot_icon = show_radial_menu(cyborg, cyborg, security_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(security_robot_icon)
+		if("Sleek Security")
+			cyborg_base_icon = "sleekecurity"
+		if("Noble Security")
+			cyborg_base_icon = "noble-sec"
+		if("Ancient Security")
+			cyborg_base_icon = "secbot"
+		if("Servbot")
+			cyborg_base_icon = "servbot-sec"
+		if("Securitron")
+			cyborg_base_icon = "securitron"
+		if("Normal")
+			cyborg_base_icon = "sec"
+		if("Droid Security")
+			cyborg_base_icon = "droid-security"
+		if("Booty")
+			cyborg_base_icon = "booty-red"
+		if("NobleH")
+			cyborg_base_icon = "noble-sech"
+		if("Woody")
+			cyborg_base_icon = "woody"
+		if("Kodiak-sec")
+			cyborg_base_icon = "kodiak-sec"
+		if("Marina")
+			cyborg_base_icon = "marinaSC"
+		if("Normal but with treads")
+			cyborg_base_icon = "sec-tread"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_sec"
+		else
+			return FALSE
+	return ..()
+
 /obj/item/robot_module/security/do_transform_animation()
 	..()
 	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
@@ -446,6 +651,37 @@
 	can_be_pushed = FALSE
 	hat_offset = -2
 
+/obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/peacekeeper_icons = list(
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
+		"Omoikane" = image(icon = 'icons/mob/robots.dmi', icon_state = "omoikane"),
+		"Hos" = image(icon = 'icons/mob/robots.dmi', icon_state = "peaceborg-hos"),
+		"Warden" = image(icon = 'icons/mob/robots.dmi', icon_state = "peaceborg-warden"),
+		"Noir" = image(icon = 'icons/mob/robots.dmi', icon_state = "peaceborg-noir"),
+		"NoirBW" = image(icon = 'icons/mob/robots.dmi', icon_state = "peaceborg-noirbw"),
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_sci")
+	)
+	var/peacekeeper_robot_icon = show_radial_menu(cyborg, cyborg, peacekeeper_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(peacekeeper_robot_icon)
+		if("Normal")
+			cyborg_base_icon = "peace"
+		if("Omoikane")
+			cyborg_base_icon = "omoikane"
+		if("Hos")
+			cyborg_base_icon = "peaceborg-hos"
+		if("Warden")
+			cyborg_base_icon = "peaceborg-warden"
+		if("Noir")
+			cyborg_base_icon = "peaceborg-noir"
+		if("NoirBW")
+			cyborg_base_icon = "peaceborg-noirbw"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_sci"
+		else
+			return FALSE
+	return ..()
+
 /obj/item/robot_module/peacekeeper/do_transform_animation()
 	..()
 	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
@@ -482,6 +718,55 @@
 	moduleselect_icon = "janitor"
 	hat_offset = -5
 	clean_on_move = TRUE
+
+/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/janitor_icons = list(
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
+		"Janbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "janbot"),
+		"Droid" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-janitor"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-green"),
+		"Han-d" = image(icon = 'icons/mob/robots.dmi', icon_state = "han-d"),
+		"Mechaduster" = image(icon = 'icons/mob/robots.dmi', icon_state = "mechaduster"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaJN"),
+		"Sleek" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekjanitor"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-jani"),
+		"Flynn" = image(icon = 'icons/mob/robots.dmi', icon_state = "flynn"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-janh"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-jan"),
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_jani")
+	)
+	var/janitor_robot_icon = show_radial_menu(cyborg, cyborg, janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(janitor_robot_icon)
+		if("Normal")
+			cyborg_base_icon = "janitor"
+		if("Janbot")
+			cyborg_base_icon = "janbot"
+		if("Droid")
+			cyborg_base_icon = "droid-janitor"
+		if("Booty")
+			cyborg_base_icon = "booty-green"
+		if("Han-d")
+			cyborg_base_icon = "han-d"
+		if("Mechaduster")
+			cyborg_base_icon = "mechaduster"
+		if("Marina")
+			cyborg_base_icon = "marinaJN"
+		if("Sleek")
+			cyborg_base_icon = "sleekjanitor"
+		if("Servbot")
+			cyborg_base_icon = "servbot-jani"
+		if("Flynn")
+			cyborg_base_icon = "flynn"
+		if("NobleH")
+			cyborg_base_icon = "noble-janh"
+		if("Noble")
+			cyborg_base_icon = "noble-jan"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_jani"
+		else
+			return FALSE
+	return ..()
 
 /obj/item/robot_module/janitor/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -566,7 +851,16 @@
 		"Butler" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
 		"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
 		"Kent" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
-		"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat")
+		"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
+		"Hydrobot" = image(icon = 'icons/mob/robots.dmi', icon_state = "hydrobot"),
+		"Booty" = image(icon = 'icons/mob/robots.dmi', icon_state = "booty-blue"),
+		"Marina" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaSV"),
+		"Sleek" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekservice"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot"),
+		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-service"),
+		"Lloyd" = image(icon = 'icons/mob/robots.dmi', icon_state = "lloyd"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-srv"),
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_service")
 	)
 	var/service_robot_icon = show_radial_menu(cyborg, cyborg, service_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
@@ -584,6 +878,24 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He's already wearing a hat
+		if("Hydrobot")
+			cyborg_base_icon = "hydrobot"
+		if("Booty")
+			cyborg_base_icon = "booty-blue"
+		if("Marina")
+			cyborg_base_icon = "marinaSV"
+		if("Sleek")
+			cyborg_base_icon = "sleekservice"
+		if("Servbot")
+			cyborg_base_icon = "servbot"
+		if("Kodiak")
+			cyborg_base_icon = "kodiak-service"
+		if("Lloyd")
+			cyborg_base_icon = "lloyd"
+		if("Noble")
+			cyborg_base_icon = "noble-srv"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_service"
 		else
 			return FALSE
 	return ..()
@@ -629,7 +941,17 @@
 	var/list/miner_icons = list(
 		"Lavaland Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
 		"Asteroid Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD"),
-		"Spider Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "spidermin")
+		"Ancient Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerbot"),
+		"Droid Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-miner"),
+		"MarinaMN" = image(icon = 'icons/mob/robots.dmi', icon_state = "marinaMN"),
+		"Sleekminer" = image(icon = 'icons/mob/robots.dmi', icon_state = "sleekminer"),
+		"Servbot" = image(icon = 'icons/mob/robots.dmi', icon_state = "servbot-miner"),
+		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-miner"),
+		"Ishimura" = image(icon = 'icons/mob/robots.dmi', icon_state = "ishimura"),
+		"NobleH" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-suph"),
+		"Noble" = image(icon = 'icons/mob/robots.dmi', icon_state = "noble-sup"),
+		"Wall-e" = image(icon = 'icons/mob/robots.dmi', icon_state = "wall-a"),
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_miner")
 	)
 	var/miner_robot_icon = show_radial_menu(cyborg, cyborg, miner_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
 	switch(miner_robot_icon)
@@ -640,6 +962,28 @@
 			special_light_key = "miner"
 		if("Spider Miner")
 			cyborg_base_icon = "spidermin"
+		if("Ancient Miner")
+			cyborg_base_icon = "minerbot"
+		if("Droid Miner")
+			cyborg_base_icon = "droid-miner"
+		if("MarinaMN")
+			cyborg_base_icon = "marinaMN"
+		if("Sleekminer")
+			cyborg_base_icon = "sleekminer"
+		if("Servbot")
+			cyborg_base_icon = "servbot-miner"
+		if("Kodiak")
+			cyborg_base_icon = "kodiak-miner"
+		if("Ishimura")
+			cyborg_base_icon = "ishimura"
+		if("NobleH")
+			cyborg_base_icon = "noble-suph"
+		if("Noble")
+			cyborg_base_icon = "noble-sup"
+		if("Wall-e")
+			cyborg_base_icon = "wall-a"
+		if("Roomba")
+			cyborg_base_icon = "zoomba_miner"
 		else
 			return FALSE
 	return ..()
@@ -675,6 +1019,28 @@
 	var/mob/living/silicon/robot/Syndi = loc
 	Syndi.faction  -= "silicon" //ai turrets
 
+/obj/item/robot_module/syndicate/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/syndicate_icons = list(
+		"Roomba" = image(icon = 'icons/mob/robots.dmi', icon_state = "zoomba_combat"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"Walking gun" = image(icon = 'icons/mob/robots.dmi', icon_state = "motile-syndie"),
+		"Chesty" = image(icon = 'icons/mob/robots.dmi', icon_state = "chesty")
+	)
+	var/syndicate_robot_icon = show_radial_menu(cyborg, cyborg, syndicate_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(syndicate_robot_icon)
+		if("Roomba")
+			cyborg_base_icon = "zoomba_combat"
+		if("Normal")
+			cyborg_base_icon = "synd_sec"
+		if("Walking gun")
+			cyborg_base_icon = "motile-syndie"
+		if("Chesty")
+			cyborg_base_icon = "chesty"
+		else
+			return FALSE
+	return ..()
+
 /obj/item/robot_module/syndicate/remove_module(obj/item/I, delete_after)
 	..()
 	var/mob/living/silicon/robot/Syndi = loc
@@ -707,6 +1073,22 @@
 	moduleselect_icon = "malf"
 	can_be_pushed = FALSE
 	hat_offset = 3
+
+/obj/item/robot_module/syndicate_medical/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/syndicate_icons = list(
+		"Droid" = image(icon = 'icons/mob/robots.dmi', icon_state = "droid-crisis"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical")
+	)
+	var/syndicate_robot_icon = show_radial_menu(cyborg, cyborg, syndicate_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(syndicate_robot_icon)
+		if("Droid")
+			cyborg_base_icon = "droid-crisis"
+		if("Normal")
+			cyborg_base_icon = "synd_medical"
+		else
+			return FALSE
+	return ..()
 
 /obj/item/robot_module/saboteur
 	name = "Syndicate Saboteur"
@@ -741,6 +1123,22 @@
 	magpulsing = TRUE
 	hat_offset = -4
 	canDispose = TRUE
+
+/obj/item/robot_module/saboteur/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/syndicate_icons = list(
+		"Kodiak" = image(icon = 'icons/mob/robots.dmi', icon_state = "kodiak-combat"),
+		"Normal" = image(icon = 'icons/mob/robots.dmi', icon_state = "syndie_engi")
+	)
+	var/syndicate_robot_icon = show_radial_menu(cyborg, cyborg, syndicate_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_module), radius = 42, require_near = TRUE)
+	switch(syndicate_robot_icon)
+		if("Kodiak")
+			cyborg_base_icon = "kodiak-combat"
+		if("Normal")
+			cyborg_base_icon = "syndie_engi"
+		else
+			return FALSE
+	return ..()
 
 /datum/robot_energy_storage
 	var/name = "Generic energy storage"
