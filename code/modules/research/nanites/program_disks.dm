@@ -134,3 +134,6 @@
 
 /obj/item/disk/nanite_program/species_sensor
 	program_type = /datum/nanite_program/sensor/species
+
+/obj/item/disk/nanite_program/nanojutsu
+	program_type = /datum/nanite_program/nanojutsu
